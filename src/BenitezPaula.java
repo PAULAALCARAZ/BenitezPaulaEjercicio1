@@ -7,17 +7,19 @@ public class BenitezPaula {
         int [][] matriz; //declaramos la matriz para el juego.
         int numFilas; //declaramos variable para las filas que el usuario ira inserir
         int numColumnas; //declaramos la variable para las colummnas que el usuario ira inserir.
+        int x, y; //variable coordenadas
+
 
         boolean salir = false;  //declaramos boolean.
 
-        System.out.println("Hola! bienvenido al juego del Bomber Man /n" + "comencemos!");
+        System.out.println("Hola! bienvenido al juego del Bomber Man \n" + "comencemos!");
 
 
         //ahora hacemos un bucle para pedir el numero de filas y validar que sea correcto.
         while (true) {
             System.out.print("Introduce el número de filas (recuerda que debe ser entero positivo): ");
 
-            if (sc.hasNext()) { // aqui Verificamos si la entrada es un número entero la sintaxis "hasNext" que devuelve true si existe un siguiente elemento.
+            if (sc.hasNextInt()) { // aqui Verificamos si la entrada es un número entero la sintaxis "hasNextInt" que devuelve true si existe un siguiente elemento.
 
                 numFilas = sc.nextInt(); //aqui leemos el numero introducido.
 
@@ -40,7 +42,7 @@ public class BenitezPaula {
         while (true) {
             System.out.print("Introduce el número de columnas (recuerda que debe ser entero positivo): ");
 
-            if (sc.hasNext()) { // Verificamos si la entrada es un número entero
+            if (sc.hasNextInt()) { // Verificamos si la entrada es un número entero (usando hasNextInt)
 
                 numColumnas = sc.nextInt(); //aqui leemos el numero introducido.
 
@@ -86,14 +88,13 @@ public class BenitezPaula {
                 case 1:
                     for (int i = 0; i < numFilas; i++) {
                         for (int j = 0; j < numColumnas; j++) {
-                            System.out.println(matriz[i][j] + " ");
+                            System.out.print(matriz[i][j] + " "); //apenas "print" para que no salte las lineas.
                         }
                         System.out.println();
                     }
                     break;
 
                 case 2:
-                    int x, y; // inicializamos las variables en "-1" para evitar errores, porque la casilla 0 ya tiene valores.
 
                     System.out.println("Para poner la bomba necesitaremos coordenadas X & Y (fila y colummna: ");
 
@@ -113,7 +114,7 @@ public class BenitezPaula {
                         }
                     }
 
-                    while (true) { //pediremos columnnas.
+                    while (true) { //validamos coordenadas Y.
                         System.out.print("Introduce la coordenada de la columna (y): ");
                         if (sc.hasNextInt()) { // nuevamente verificamos si el valor introducido es un entero
                             y = sc.nextInt() - 1; // "-1" para ajustar el índice de la  matriz
@@ -121,7 +122,7 @@ public class BenitezPaula {
                             if (y >= 0 && y < numColumnas) {
                                 break; // comprovamos si el valor está dentro del rango.
                             } else {
-                                System.out.println("Error de Coordenada. El numero debe ser entre 1 y " + numFilas + ".");
+                                System.out.println("Error de Coordenada. El numero debe ser entre 1 y " + numColumnas + ".");
                             }
                         } else {
                             System.out.println("Error. Por favor, introduce un número entero.");
@@ -160,10 +161,10 @@ public class BenitezPaula {
                                 break;
                             }
                         }
-                        if (matrizVacia)break;
+                        if (!matrizVacia)break;
 
                     }
-                    if (matrizVacia){
+                    if (matrizVacia){ //si la matriz está vacia termina el juego
                         System.out.println("La matriz está vacia, fin del juego.");
                         salir= true;
 
