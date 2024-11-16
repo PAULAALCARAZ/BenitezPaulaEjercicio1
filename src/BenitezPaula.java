@@ -88,7 +88,7 @@ public class BenitezPaula {
                 case 1:
                     for (int i = 0; i < numFilas; i++) {
                         for (int j = 0; j < numColumnas; j++) {
-                            System.out.print(matriz[i][j] + " "); //apenas "print" para que no salte las lineas.
+                            System.out.print(matriz [i][j] + " "); //apenas "print" para que no salte las lineas.
                         }
                         System.out.println();
                     }
